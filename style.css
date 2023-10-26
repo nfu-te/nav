@@ -1,0 +1,150 @@
+/* Reset */
+* {
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+
+/* general */
+header, footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+.block-layout, .grid-layout, .flex-layout {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item, .flex-item, .grid-li, .flex-li {
+    padding: 10px;
+}
+
+header, footer, ul, .block-item, .grid-item, .flex-item {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: black;
+}
+
+
+/* Block Layout */
+.block-container, .block-nav {
+    display: block;
+}
+
+.block-nav {
+    position: relative; /* establishes a positioning context for its child elements with position: absolute; */
+}
+
+.block-nav::before, /* pseudo-elements: two virtual elements before and after */
+.block-nav::after {
+    content: ""; /* The content property is used to specify the content of the pseudo-elements. */
+    position: absolute; /* Removed from the normal document flow and won't affect the layout of other elements */
+    top: 0;
+    bottom: 0;
+    width: 2em;
+    background-color: lightblue;
+}
+
+.block-nav::after {
+    right: 0;
+}
+
+.block-nav, .block-item {
+    margin: 5px;
+}
+
+.block-item, .inline-block-li {
+    background-color: lightblue;
+}
+
+.block-item, .inline-block-li {
+    padding: 10px;
+}
+
+.inline-block-li {
+    display: inline-block;
+    width: 32%;
+}
+
+@media only screen and (max-width: 600px) {
+    .inline-block-li {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+    .block-nav::before,
+    .block-nav::after {
+        width: 0;
+    }
+    .block-item {
+        padding: 2em 0;
+    }
+}
+
+
+/* Grid Layout */
+.grid-container, .grid-ul {
+    display: grid;
+    gap: 5px;
+}
+
+.grid-container {
+    grid-template-rows: repeat(4);
+}
+
+.grid-ul {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-item, .grid-li {
+    background-color: lightgreen;
+}
+
+@media only screen and (max-width: 600px) {
+    .grid-ul {
+        grid-template-columns: unset;
+        grid-template-rows: repeat(3, 1fr);
+    }
+    .grid-item {
+        padding: 2em 0;
+    }
+}
+
+
+/* Flex Layout */
+.flex-container, .flex-ul {
+    display: flex;
+    gap: 5px;
+}
+
+.flex-container {
+    flex-direction: column;
+}
+
+.flex-item, .flex-li {
+    flex: 1;
+    background-color: lightcoral;
+}
+
+@media only screen and (max-width: 600px) {
+    .flex-ul {
+        flex-direction: column;
+    }
+    .flex-item {
+        padding: 2em 0;
+    }
+}
